@@ -4,6 +4,8 @@
 
 *English version below.*
 
+🎬 **Video:** [So sieht das aus – Vibration im Lenkrad (YouTube Short)](https://youtube.com/shorts/aKC5n7z8Q7o)
+
 ☕ **Hat dir das Projekt geholfen?** Ich freue mich über einen Kaffee: [ko-fi.com/g29adapter](https://ko-fi.com/g29adapter)
 
 > Privates Bastelprojekt. Kein offizielles Produkt von Nintendo oder Logitech. Nutzung auf eigene Gefahr – siehe [Haftungsausschluss](#haftungsausschluss).
