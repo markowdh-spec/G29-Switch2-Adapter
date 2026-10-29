@@ -6,7 +6,11 @@
 
 *Download startet direkt. Wie du sie aufspielst, steht unten unter [Einrichtung](#einrichtung). English version below.*
 
-🎬 **Video:** [So sieht das aus – Vibration im Lenkrad (YouTube Short)](https://youtube.com/shorts/aKC5n7z8Q7o)
+🎬 **Video-Anleitung (1 Min.):** [Logitech G29 an der Switch 2 – in 5 Schritten](https://youtu.be/ny4gz5zSP-I)
+
+[![Video-Anleitung ansehen](https://img.youtube.com/vi/ny4gz5zSP-I/hqdefault.jpg)](https://youtu.be/ny4gz5zSP-I)
+
+📱 Kurzvideo: [Vibration im Lenkrad (YouTube Short)](https://youtube.com/shorts/aKC5n7z8Q7o)
 
 ☕ **Hat dir das Projekt geholfen?** Ich freue mich über einen Kaffee: [ko-fi.com/g29adapter](https://ko-fi.com/g29adapter)
 
