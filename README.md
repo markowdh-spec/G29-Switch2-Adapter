@@ -28,10 +28,12 @@ Getestet mit: **Logitech G29** (Schalter PC / PS4 / PS5) an der **Switch 2 im Do
 
 | Teil | Hinweis |
 |---|---|
-| **Waveshare RP2350-USB-A** | Board mit großer USB-A-Buchse + USB-C (ca. 13 €) |
+| **Waveshare RP2350-USB-A** | Board mit großer USB-A-Buchse + USB-C (ca. 13 €) – [bei Amazon ansehen*](https://link.amazon/B08NXSUWi) |
 | USB-C-**Daten**kabel | kein reines Ladekabel |
 | Logitech G29 mit Netzteil | Schiebeschalter am Lenkrad auf **PC** |
 | Firmware | [`G29-Adapter-Switch2-v10.uf2`](firmware/G29-Adapter-Switch2-v10.uf2) im Ordner `firmware` (dort auf „Download raw file“ tippen) |
+
+<sub>*Affiliate-Link: Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich ändert sich am Preis nichts.</sub>
 
 ## Einrichtung
 
