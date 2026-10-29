@@ -2,7 +2,9 @@
 
 **Logitech G29 Lenkrad an der Nintendo Switch 2** – ein DIY-Adapter aus einem ca. 13 € Board und einer Firmware-Datei. Ohne Löten.
 
-*English version below.*
+## ⬇️ [Firmware herunterladen (v10)](https://github.com/markowdh-spec/G29-Switch2-Adapter/raw/master/firmware/G29-Adapter-Switch2-v10.uf2)
+
+*Download startet direkt. Wie du sie aufspielst, steht unten unter [Einrichtung](#einrichtung). English version below.*
 
 🎬 **Video:** [So sieht das aus – Vibration im Lenkrad (YouTube Short)](https://youtube.com/shorts/aKC5n7z8Q7o)
 
