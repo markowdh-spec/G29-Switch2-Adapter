@@ -27,7 +27,7 @@ Getestet mit: **Logitech G29** (Schalter PC / PS4 / PS5) an der **Switch 2 im Do
 | **Waveshare RP2350-USB-A** | Board mit großer USB-A-Buchse + USB-C (ca. 13 €) |
 | USB-C-**Daten**kabel | kein reines Ladekabel |
 | Logitech G29 mit Netzteil | Schiebeschalter am Lenkrad auf **PC** |
-| Firmware | `G29-Adapter-Switch2-v10.uf2` unter [Releases](../../releases) |
+| Firmware | [`G29-Adapter-Switch2-v10.uf2`](firmware/G29-Adapter-Switch2-v10.uf2) im Ordner `firmware` (dort auf „Download raw file“ tippen) |
 
 ## Einrichtung
 
@@ -103,6 +103,6 @@ Privates Bastelprojekt. Nachbau und Nutzung erfolgen auf eigene Gefahr. Soweit g
 - Game rumble → force pulses in the wheel, adjustable centring spring, H-shifter → paddle presses
 - On-wheel settings (+/−, red dial, Enter), saved to flash automatically
 
-**Setup:** hold BOOT, plug into a PC, drop the `.uf2` from [Releases](../../releases) onto the drive. On the Switch 2 enable *Pro Controller Wired Communication*. Wheel mode switch on **PC**. Wheel → board USB-A, board USB-C → dock.
+**Setup:** hold BOOT, plug into a PC, drop [`firmware/G29-Adapter-Switch2-v10.uf2`](firmware/G29-Adapter-Switch2-v10.uf2) onto the drive. On the Switch 2 enable *Pro Controller Wired Communication*. Wheel mode switch on **PC**. Wheel → board USB-A, board USB-C → dock.
 
 Personal hobby project, provided as-is without warranty, use at your own risk. Not affiliated with or endorsed by Nintendo or Logitech. Credits and licenses: see the table above.
