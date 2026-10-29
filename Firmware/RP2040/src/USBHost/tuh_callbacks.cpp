@@ -7,6 +7,7 @@
 
 #include "USBHost/HostDriver/XInput/tuh_xinput/tuh_xinput.h"
 #include "USBHost/HostManager.h"
+#include "USBHost/HostDriver/LogitechG29/LogitechG29.h"
 #include "OGXMini/OGXMini.h"
 #include "Board/ogxm_log.h"
 #include "USBHost/HostDriver/VictrixGambit/VictrixGambit.h"
@@ -35,6 +36,7 @@ const char* host_type_name(HostDriverType t)
         case HostDriverType::FLYDIGI_APEX4_WUKONG: return "FLYDIGI_APEX4_WUKONG";
         case HostDriverType::GAMESIR_CYCLONE2: return "GAMESIR_CYCLONE2";
         case HostDriverType::GAMESIR_G7_PRO: return "GAMESIR_G7_PRO";
+        case HostDriverType::LOGITECH_G29: return "LOGITECH_G29";
         case HostDriverType::VICTRIX_GAMBIT: return "VICTRIX_GAMBIT";
         case HostDriverType::XBOXOG: return "XBOXOG";
         case HostDriverType::XBOXONE: return "XBOXONE";
@@ -93,6 +95,11 @@ void tuh_hid_mount_cb(uint8_t dev_addr, uint8_t instance, uint8_t const* desc_re
 
     HostManager& host_manager = HostManager::get_instance();
     HostDriverType host_type = HostManager::get_type({ vid, pid });
+    /* Any other Logitech wheel exposing a Joystick collection: use the wheel driver. */
+    if (host_type == HostDriverType::UNKNOWN && vid == LogitechG29::VID &&
+        LogitechG29Host::is_joystick_interface(desc_report, desc_len)) {
+        host_type = HostDriverType::LOGITECH_G29;
+    }
 
 #if defined(CONFIG_OGXM_DEBUG)
     /* Session affinity + multi-presentation NS fingerprints (not global 057E:2009).

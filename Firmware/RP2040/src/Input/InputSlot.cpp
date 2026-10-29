@@ -94,6 +94,7 @@ const char* driver_name(HostDriverType t) {
     switch (t) {
         case HostDriverType::GAMESIR_CYCLONE2: return "GAMESIR_CYCLONE2";
         case HostDriverType::GAMESIR_G7_PRO: return "GAMESIR_G7_PRO";
+        case HostDriverType::LOGITECH_G29: return "LOGITECH_G29";
         case HostDriverType::SWITCH_PRO: return "SWITCH_PRO";
         case HostDriverType::SWITCH_PRO_2: return "SWITCH_PRO_2";
         case HostDriverType::SWITCH: return "SWITCH";

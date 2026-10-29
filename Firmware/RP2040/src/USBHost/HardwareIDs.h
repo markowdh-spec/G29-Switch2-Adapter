@@ -447,6 +447,16 @@ static const HardwareID GAMESIR_G7_PRO_IDS[] =
     {0x3537, 0x1022}, // GameSir G7 Pro
 };
 
+/** Logitech G29 racing wheel (PS3 switch position). Claimed before DINPUT. */
+static const HardwareID LOGITECH_G29_IDS[] =
+{
+    {0x046D, 0xC24F}, // G29 native mode
+    {0x046D, 0xC294}, // Driving Force EX compatibility mode (G29 power-up state)
+    {0x046D, 0xC266}, // G923 PlayStation/PC, classic (native) mode
+    {0x046D, 0xC267}, // G923 PlayStation, PS force-feedback mode (needs mode switch)
+    {0x046D, 0xC262}, // G920 HID mode
+};
+
 #if defined(CONFIG_OGXM_DEBUG)
 /** Flydigi V1 vendor composite (shared by APEX 4 family). Debug probe only — identify via GET_INFO. */
 static const HardwareID FLYDIGI_APEX4_WUKONG_IDS[] =
@@ -473,6 +483,7 @@ struct HostTypeMap
 static const HostTypeMap HOST_TYPE_MAP[] = 
 {
     { GAMESIR_G7_PRO_IDS, sizeof(GAMESIR_G7_PRO_IDS) / sizeof(HardwareID), HostDriverType::GAMESIR_G7_PRO },
+    { LOGITECH_G29_IDS, sizeof(LOGITECH_G29_IDS) / sizeof(HardwareID), HostDriverType::LOGITECH_G29 },
 #if defined(CONFIG_OGXM_DEBUG)
     /* Before DINPUT so dedicated probes claim known IDs first. */
     { FLYDIGI_APEX4_WUKONG_IDS, sizeof(FLYDIGI_APEX4_WUKONG_IDS) / sizeof(HardwareID), HostDriverType::FLYDIGI_APEX4_WUKONG },

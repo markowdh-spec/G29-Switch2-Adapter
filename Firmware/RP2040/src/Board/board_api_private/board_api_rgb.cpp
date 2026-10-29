@@ -9,7 +9,12 @@
 namespace board_api_rgb {
 
 WS2812& get_ws2812() {
+#if defined(CONFIG_OGXM_BOARD_RP2350_USB_A)
+    /* Waveshare RP2350-USB-A LED is RGB-ordered (red/green showed swapped with GRB). */
+    static WS2812 ws2812 = WS2812(RGB_PXL_PIN, 1, pio1, 0, WS2812::FORMAT_RGB);
+#else
     static WS2812 ws2812 = WS2812(RGB_PXL_PIN, 1, pio1, 0, WS2812::FORMAT_GRB);
+#endif
     return ws2812;
 }
 

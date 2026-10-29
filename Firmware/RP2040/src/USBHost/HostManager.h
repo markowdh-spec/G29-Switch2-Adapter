@@ -42,6 +42,7 @@
 #include "USBHost/HostDriver/HIDGeneric/HIDGeneric.h"
 #include "USBHost/HostDriver/VictrixGambit/VictrixGambit.h"
 #include "USBHost/HostDriver/GameSirG7Pro/GameSirG7Pro.h"
+#include "USBHost/HostDriver/LogitechG29/LogitechG29.h"
 #if defined(CONFIG_OGXM_DEBUG)
 #include "USBHost/HostDriver/FlydigiApex4Wukong/FlydigiApex4Wukong.h"
 #include "USBHost/HostDriver/GameSirCyclone2/GameSirCyclone2.h"
@@ -175,6 +176,7 @@ public:
 				case HostDriverType::SWITCH: type_name = "SWITCH"; break;
 				case HostDriverType::GAMESIR_CYCLONE2: type_name = "GAMESIR_CYCLONE2"; break;
 				case HostDriverType::GAMESIR_G7_PRO: type_name = "GAMESIR_G7_PRO"; break;
+				case HostDriverType::LOGITECH_G29: type_name = "LOGITECH_G29"; break;
 				case HostDriverType::VICTRIX_GAMBIT: type_name = "VICTRIX_GAMBIT"; break;
 				case HostDriverType::XBOX360: type_name = "XBOX360"; break;
 				case HostDriverType::XBOXONE: type_name = "XBOXONE"; break;
@@ -242,6 +244,16 @@ public:
 				}
 				debug_printf("GAMESIR G7 PRO Loaded\n"); fflush(stdout);
 				interface.driver = std::make_unique<GameSirG7ProHost>(gp_idx);
+				break;
+			case HostDriverType::LOGITECH_G29:
+				/* G29 exposes extra vendor HID interfaces — only claim the Joystick one. */
+				if (!LogitechG29Host::is_joystick_interface(report_desc, desc_len)) {
+					debug_printf("LOGITECH G29 skip non-joystick HID iface (desc_len=%u)\n",
+					             static_cast<unsigned>(desc_len));
+					return false;
+				}
+				debug_printf("LOGITECH G29 Loaded\n"); fflush(stdout);
+				interface.driver = std::make_unique<LogitechG29Host>(gp_idx);
 				break;
 			case HostDriverType::SWITCH:
 				debug_printf("SWITCH Loaded\n"); fflush(stdout);
@@ -555,7 +567,9 @@ public:
 				const bool switch_pro_hid_periodic =
 					iface.driver_class == DriverClass::HID &&
 					(iface.host_driver_type == HostDriverType::SWITCH_PRO ||
-					 iface.host_driver_type == HostDriverType::SWITCH_PRO_2);
+					 iface.host_driver_type == HostDriverType::SWITCH_PRO_2 ||
+					 /* G29: mode-switch / autocenter commands are sent from send_feedback(). */
+					 iface.host_driver_type == HostDriverType::LOGITECH_G29);
 				/* Composite XInput+PS4 HID: rare keepalive only (200 ms OUT chokes many third-party pads). */
 				bool ps4_composite_keepalive = false;
 				if (has_xinput && ps_style_hid && iface.driver_class == DriverClass::HID &&

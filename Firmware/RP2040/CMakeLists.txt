@@ -325,6 +325,7 @@ if(EN_USB_HOST)
         ${SRC}/USBHost/HostDriver/GameSirCyclone2/Cyclone2Ds4Wired.cpp
         ${SRC}/USBHost/HostDriver/GameSirCyclone2/Cyclone2HidPassive.cpp
         ${SRC}/USBHost/HostDriver/GameSirG7Pro/GameSirG7Pro.cpp
+        ${SRC}/USBHost/HostDriver/LogitechG29/LogitechG29.cpp
 
         ${SRC}/USBHost/HIDParser/HIDJoystick.cpp
         ${SRC}/USBHost/HIDParser/HIDReportDescriptor.cpp

@@ -35,7 +35,7 @@ static bool s_pio_usb_sof_hw_timer = false;
 static std::atomic<bool> s_driver_reboot_pending{false};
 /** Debounce transient PIO USB umount before tearing down the USB device stack. */
 static std::atomic<bool> s_host_teardown_scheduled{false};
-constexpr uint32_t HOST_UNMOUNT_DEBOUNCE_MS = 1500;
+constexpr uint32_t HOST_UNMOUNT_DEBOUNCE_MS = 8000; /* wheel may drop briefly; give it time to re-attach before rebooting */
 
 static void pio_usb_sof_timer_stop() {
     if (!s_pio_usb_sof_hw_timer) {
@@ -115,6 +115,13 @@ void core1_task() {
     while(!board_api::usb::host_connected()) {
         sleep_ms(100);
     }
+
+#ifndef OGXM_HOST_START_DELAY_MS
+#define OGXM_HOST_START_DELAY_MS 6000
+#endif
+    /* Racing wheels (G29) power up and run a motor calibration when they first get
+     * VBUS; enumerating during that phase drops the PIO USB link. Let it settle. */
+    sleep_ms(OGXM_HOST_START_DELAY_MS);
 
     configure_pio_usb_host();
     board_api_usbh::suspend_line_irq();

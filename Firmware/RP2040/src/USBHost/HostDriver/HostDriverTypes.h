@@ -22,6 +22,8 @@ enum class HostDriverType
     GAMESIR_CYCLONE2,
     /** GameSir G7 Pro wired HID (3537:1022) — Xbox-order face bits, not DInput PS layout. */
     GAMESIR_G7_PRO,
+    /** Logitech G29 racing wheel (046D:C24F native, C294 compat -> switched to native). */
+    LOGITECH_G29,
     /** Victrix Gambit Tournament Controller — wired Xbox GIP (0E6F:0250 verified, 02D6 documented). */
     VICTRIX_GAMBIT,
     XBOXOG,
