@@ -413,15 +413,41 @@ void LogitechG29Host::process_report(Gamepad& gamepad, uint8_t address, uint8_t 
         cw_prev_ = cw_now;
         ccw_prev_ = ccw_now;
 
-        /* Anti-deadzone: the moment the wheel leaves centre, jump past the game's own
-         * stick deadzone, then scale linearly to full lock. */
-        int32_t steer = wheel_to_stick(wheel, STEER_OPTIONS[steer_idx_]);
-        if (steer != 0) {
-            const int32_t floor_v = (32767 * anti_dz_pct_) / 100;
-            const int32_t mag = (steer < 0) ? -steer : steer;
-            int32_t out = floor_v + (mag * (32767 - floor_v)) / 32767;
-            if (out > 32767) out = 32767;
-            steer = (steer < 0) ? -out : out;
+        /* v11 steering curve (calmer centre):
+         *  1. light smoothing of the raw wheel position (removes sensor jitter)
+         *  2. small centre deadzone
+         *  3. anti-deadzone is faded in over the first few degrees instead of jumping
+         *     straight to anti_dz_pct_ (the jump made the kart twitch around centre)
+         *  4. gentle expo curve: finer control near centre, full lock unchanged
+         *  5. tiny output hysteresis so the value does not flicker */
+        if (!wheel_f_init_) { wheel_f_ = float(wheel); wheel_f_init_ = true; }
+        wheel_f_ += (float(wheel) - wheel_f_) * STEER_SMOOTH;
+        int32_t steer = 0;
+        {
+            const float deg_per_count = float(WHEEL_LOCK_DEGREES) / 65536.0f;
+            const float steer_deg = float(STEER_OPTIONS[steer_idx_]);
+            float deg = (wheel_f_ - 32768.0f) * deg_per_count;      // wheel angle, + = right
+            const bool neg = deg < 0;
+            float a = neg ? -deg : deg;
+            if (a > STEER_DZ_DEG) {
+                float x = (a - STEER_DZ_DEG) / (steer_deg - STEER_DZ_DEG); // 0..1
+                if (x > 1.0f) x = 1.0f;
+                const float fl = float(anti_dz_pct_) / 100.0f;
+                auto shape = [&](float v) {
+                    const float g = v * (1.0f - STEER_EXPO) + v * v * v * STEER_EXPO;
+                    return fl + (1.0f - fl) * g;
+                };
+                const float xr = STEER_RAMP_DEG / (steer_deg - STEER_DZ_DEG);
+                float out = (x < xr) ? (x / xr) * shape(xr) : shape(x);
+                if (out > 1.0f) out = 1.0f;
+                steer = int32_t(out * 32767.0f);
+                if (neg) steer = -steer;
+            }
+            const int32_t d = steer - last_steer_;
+            if ((d < 0 ? -d : d) < STEER_HYST && steer != 0) {
+                steer = last_steer_;
+            }
+            last_steer_ = steer;
         }
         std::tie(gp_in.joystick_lx, gp_in.joystick_ly) =
             gamepad.scale_joystick_l(static_cast<int16_t>(steer), static_cast<int16_t>(0));

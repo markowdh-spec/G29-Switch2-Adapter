@@ -40,7 +40,12 @@ namespace LogitechG29
     static constexpr uint16_t WHEEL_LOCK_DEGREES = 900;  // G29 native full range
     static constexpr uint16_t STEER_DEGREES      = 120;  // ±deg for full stick deflection
     static constexpr uint16_t STEER_DEADZONE_DEG = 1;    // ignore tiny wobble around centre
-    static constexpr uint8_t  ANTI_DEADZONE_PCT  = 15;   // start value; +/- rocker changes it live
+    static constexpr uint8_t  ANTI_DEADZONE_PCT  = 30;   // start value; +/- rocker changes it live (v12: 30 %, NFS-Test)
+    static constexpr float    STEER_DZ_DEG       = 1.0f;  // v12: centre deadzone in degrees
+    static constexpr float    STEER_RAMP_DEG     = 2.0f;  // v12: anti-deadzone fades in over this many degrees
+    static constexpr float    STEER_EXPO         = 0.2f;  // v12: 0 = linear, 1 = very soft centre
+    static constexpr float    STEER_SMOOTH       = 0.5f;  // v11: raw position smoothing (1 = off)
+    static constexpr int32_t  STEER_HYST         = 120;   // v11: ignore output changes smaller than this (~0.4 %)
     static constexpr uint8_t  PEDAL_THRESHOLD    = 64;   // 0..255 pressed amount for a button press
     static constexpr bool     ENABLE_AUTOCENTER  = false; // gentle spring back to centre
     static constexpr uint16_t AUTOCENTER_STRENGTH = 0x4000; // 0..0xFFFF
@@ -184,6 +189,9 @@ private:
 
     /* steering range + persistent settings */
     uint8_t steer_idx_{LogitechG29::STEER_IDX_DEFAULT};
+    float wheel_f_{32768.0f};
+    bool wheel_f_init_{false};
+    int32_t last_steer_{0};
     uint32_t enter_down_t_{0};
     bool enter_combo_used_{false};
     bool settings_dirty_{false};
