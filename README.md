@@ -2,7 +2,7 @@
 
 **Logitech G29 Lenkrad an der Nintendo Switch 2** – ein DIY-Adapter aus einem ca. 13 € Board und einer Firmware-Datei. Ohne Löten.
 
-## ⬇️ [Firmware herunterladen (v12)](https://github.com/markowdh-spec/G29-Switch2-Adapter/raw/master/firmware/G29-Adapter-Switch2-v12.uf2)
+## ⬇️ [Firmware herunterladen (v13)](https://github.com/markowdh-spec/G29-Switch2-Adapter/raw/master/firmware/G29-Adapter-Switch2-v13.uf2)
 
 *Download startet direkt. Wie du sie aufspielst, steht unten unter [Einrichtung](#einrichtung). English version below.*
 
@@ -37,7 +37,7 @@ Getestet mit: **Logitech G29** (Schalter PC / PS4 / PS5) an der **Switch 2 im Do
 | **Waveshare RP2350-USB-A** | Board mit großer USB-A-Buchse + USB-C (ca. 13 €) – [bei Amazon ansehen*](https://link.amazon/B08NXSUWi) |
 | USB-C-**Daten**kabel | kein reines Ladekabel |
 | Logitech G29 mit Netzteil | Schiebeschalter am Lenkrad auf **PC** |
-| Firmware | [`G29-Adapter-Switch2-v12.uf2`](firmware/G29-Adapter-Switch2-v12.uf2) im Ordner `firmware` (dort auf „Download raw file“ tippen) |
+| Firmware | [`G29-Adapter-Switch2-v13.uf2`](firmware/G29-Adapter-Switch2-v13.uf2) im Ordner `firmware` (dort auf „Download raw file“ tippen) |
 
 <sub>*Affiliate-Link: Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich ändert sich am Preis nichts.</sub>
 
@@ -58,8 +58,8 @@ Getestet mit: **Logitech G29** (Schalter PC / PS4 / PS5) an der **Switch 2 im Do
 | Bedienelement | Wirkung |
 |---|---|
 | `+` / `−` | Lenkmitte reagiert früher / ruhiger (Anti-Totzone, 0–50 %, Start 30 %) – je nach Spiel anpassen, z. B. Need for Speed ca. 30 %, Mario Kart eher weniger |
-| Rotes Rad rechts / links | Lenkrad schwerer / leichter (0–8) |
-| Enter kurz | Vibration leicht → mittel → stark → aus |
+| Rotes Rad rechts / links | Lenkrad schwerer / leichter (0–8, Start 2) |
+| Enter kurz | Vibration aus → leicht → mittel → stark (Start: aus) |
 | Enter halten + `+` / `−` | Lenkbereich 90° / 120° / 180° / 270° |
 | Enter 5 Sek. halten | Alles zurück auf Startwerte |
 
@@ -67,6 +67,7 @@ Getestet mit: **Logitech G29** (Schalter PC / PS4 / PS5) an der **Switch 2 im Do
 
 ## Versionen
 
+- **v13** – Startwerte: Vibration aus, Lenkrad eine Stufe schwerer (Rückstellkraft 2).
 - **v12** – Lenkung: Startwert Anti-Totzone 30 % (passt gut zu Need for Speed), weichere Mitte ohne Zucken, Sensor-Zittern wird gefiltert.
 - **v10** – Einstellungen werden gespeichert, Lenkbereich umschaltbar (90–270°), Werkseinstellung mit Enter 5 Sek.
 
@@ -122,6 +123,6 @@ Privates Bastelprojekt. Nachbau und Nutzung erfolgen auf eigene Gefahr. Soweit g
 - Game rumble → force pulses in the wheel, adjustable centring spring, H-shifter → paddle presses
 - On-wheel settings (+/−, red dial, Enter), saved to flash automatically
 
-**Setup:** hold BOOT, plug into a PC, drop [`firmware/G29-Adapter-Switch2-v12.uf2`](firmware/G29-Adapter-Switch2-v12.uf2) onto the drive. On the Switch 2 enable *Pro Controller Wired Communication*. Wheel mode switch on **PC**. Wheel → board USB-A, board USB-C → dock.
+**Setup:** hold BOOT, plug into a PC, drop [`firmware/G29-Adapter-Switch2-v13.uf2`](firmware/G29-Adapter-Switch2-v13.uf2) onto the drive. On the Switch 2 enable *Pro Controller Wired Communication*. Wheel mode switch on **PC**. Wheel → board USB-A, board USB-C → dock.
 
 Personal hobby project, provided as-is without warranty, use at your own risk. Not affiliated with or endorsed by Nintendo or Logitech. Credits and licenses: see the table above.

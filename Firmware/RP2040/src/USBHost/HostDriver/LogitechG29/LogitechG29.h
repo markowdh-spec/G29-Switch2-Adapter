@@ -50,8 +50,8 @@ namespace LogitechG29
     static constexpr bool     ENABLE_AUTOCENTER  = false; // gentle spring back to centre
     static constexpr uint16_t AUTOCENTER_STRENGTH = 0x4000; // 0..0xFFFF
     static constexpr uint8_t  SPRING_LEVEL_MAX     = 8;  // red dial steps
-    static constexpr uint8_t  SPRING_LEVEL_DEFAULT = 1;  // soft (kid friendly); 0 = no spring
-    static constexpr uint8_t  RUMBLE_LEVEL_DEFAULT = 1;  // 0 off, 1 light, 2 medium, 3 strong (Enter button cycles)
+    static constexpr uint8_t  SPRING_LEVEL_DEFAULT = 2;  // v13: one step firmer than before; 0 = no spring
+    static constexpr uint8_t  RUMBLE_LEVEL_DEFAULT = 0;  // v13: off by default; 1 light, 2 medium, 3 strong (Enter cycles)
     static constexpr uint32_t RUMBLE_TICK_MS       = 25; // pulse rate (alternating direction)
     static constexpr uint8_t  RUMBLE_MIN_AMP       = 12; // ignore tiny console rumble values
     static constexpr uint32_t RUMBLE_LIGHT         = 15; // max force deflection (of 127)
