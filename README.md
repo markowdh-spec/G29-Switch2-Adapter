@@ -10,7 +10,7 @@
 
 [![Video-Anleitung ansehen](https://img.youtube.com/vi/ny4gz5zSP-I/hqdefault.jpg)](https://youtu.be/ny4gz5zSP-I)
 
-📱 Kurzvideo: [Vibration im Lenkrad (YouTube Short)](https://youtube.com/shorts/aKC5n7z8Q7o)
+📱 Kurzvideos: [Lenkrad einstellen](https://youtube.com/shorts/OA0-hEvk0p0) · [Vibration im Lenkrad](https://youtube.com/shorts/aKC5n7z8Q7o)
 
 ☕ **Hat dir das Projekt geholfen?** Ich freue mich über einen Kaffee: [ko-fi.com/g29adapter](https://ko-fi.com/g29adapter)
 
